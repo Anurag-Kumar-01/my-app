@@ -6,7 +6,7 @@ import {Card, CardHeader, CardTitle, CardAction, CardContent, CardFooter} from '
 import { ArrowUpRight } from 'lucide-react';
 import Link from 'next/link';
 import useFetch from '@/hooks/use-fetch';
-import { updateDefaultAccount } from '@/actions/accounts';
+import { updateDefaultAccount } from '@/actions/account';
 import { toast } from 'sonner';
 
 const AccountCard = ({account}) => {
