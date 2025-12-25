@@ -9,6 +9,10 @@ import { request } from "@arcjet/next";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
+// console.log(process.env.GEMINI_API_KEY?.length);
+// console.log(genAI);
+// console.log(100);
+
 const serializeAmount = (obj) => ({
   ...obj,
   amount: obj.amount.toNumber(),
@@ -230,12 +234,13 @@ export async function getUserTransactions(query = {}) {
 // Scan Receipt
 export async function scanReceipt(file) {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     // Convert File to ArrayBuffer
     const arrayBuffer = await file.arrayBuffer();
     // Convert ArrayBuffer to Base64
     const base64String = Buffer.from(arrayBuffer).toString("base64");
+    //console.log("converted file to base64");
 
     const prompt = `
       Analyze this receipt image and extract the following information in JSON format:
@@ -263,14 +268,15 @@ export async function scanReceipt(file) {
           data: base64String,
           mimeType: file.type,
         },
-      },
+      },  
       prompt,
     ]);
 
+    //console.log("received response from Gemini");
     const response = await result.response;
     const text = response.text();
     const cleanedText = text.replace(/```(?:json)?\n?/g, "").trim();
-
+    // console.log("cleaned response text:", cleanedText);
     try {
       const data = JSON.parse(cleanedText);
       return {

@@ -94,7 +94,7 @@ export default function Home() {
               Ready to take control of your finances?
             </h2>
             <p className="text-blue-100 mb-8 max-w-2xl mx-auto ">
-              Join thousands of users who are already managing their finances with smarter with Welth
+              Join thousands of users who are already managing their finances with smarter with KnowMySpend
             </p>
             <Link href="/dashboard">
               <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">

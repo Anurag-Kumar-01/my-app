@@ -15,11 +15,11 @@ import { checkUser } from '@/lib/checkUser'
         <nav className='container mx-auto px-4 py-4 flex items-center justify-between'>
           <Link href="/" >
           <Image
-          src = {"/logo.png"}
-          alt = "welth Logo"
+          src = {"/logo4.png"}
+          alt = "KnowMySpend Logo"
           height = {60} 
           width = {200}
-          className = "h-12 w-auto object-contain"
+          className = "h-8 w-40 object-contain sm:h-12"
           />
           </Link>
        
